@@ -4,8 +4,9 @@ namespace controllers;
 
 use models\User;
 use models\factories\UserFactory;
+use yii\base\Controller;
 
-class UserManager
+class UserManager extends Controller
 {
     /** @var UserFactory */
     private $factory;
@@ -45,6 +46,7 @@ class UserManager
 
     public function __construct(UserFactory $factory)
     {
+        parent::__construct();//TODO разобрать что там
         $this->factory = $factory;
     }
 
