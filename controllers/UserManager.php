@@ -78,4 +78,22 @@ class UserManager
 
         return $users;
     }
+
+    /**
+     * @param $name
+     * @return array
+     */
+    public function getUsersByName($name)
+    {
+        $users = [];
+
+        foreach (self::$users as $userData) {
+            if ($userData['name'] === $name) {
+                $user = $this->factory->buildUserById($userData['id']);
+                $users[] = $user;
+            }
+        }
+
+        return $users;
+    }
 }
