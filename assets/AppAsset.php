@@ -21,9 +21,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/popup.css',
     ];
     public $js = [
-        'assets/websocket/wsconnection.js',
+        'js/infura-ws-client.js',
+        'js/wallet-list.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

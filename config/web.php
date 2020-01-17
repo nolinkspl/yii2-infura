@@ -11,6 +11,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'container' => [
+        'singletons' => [
+            'WalletComponentKeeper' => ['class' => 'app\components\WalletComponent\Keeper'],
+            'WalletComponent' => ['class' => 'app\components\WalletComponent\Facade'],
+        ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -19,12 +25,12 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
+//        'user' => [
+//            'identityClass' => 'app\models\User',
+//            'enableAutoLogin' => true,
+//        ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'wallet/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -43,16 +49,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:\w+(-(\w+))*>' => '<controller>/index',
+                '<controller:\w+(-(\w+))*>/<action>' => '<controller>/<action>',
             ],
         ],
-        */
     ],
     'params' => $params,
+    'defaultRoute' => 'wallet/index',
 ];
 
 if (YII_ENV_DEV) {
